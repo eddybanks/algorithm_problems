@@ -16,9 +16,11 @@ var plusOneMod = function(digits) {
     result += digits[i] * Math.pow(10,(digits.length - i - 1))
   }
   result++
-  
+  let resultLength = 0
   while(result > 0) {
-    div = 1
+    div = result / 10
+    mod = result % 10
+    resultLength++
   }
   return result
 }
