@@ -9,23 +9,22 @@
 // It should return undefined
 
 function first_recurring_character(arr) {
-  let tmpHash = {}
-  let num = 0
+  let hashList = {}
   let iteration = 0
-  while(num < 1){
-    if(tmpHash[arr[iteration]]) {
-      ++tmpHash[arr[iteration]]
+  while(iteration < arr.length){
+    if(hashList[arr[iteration]] !== undefined) {
       return arr[iteration]
-      ++num
+    } else {
+      hashList[arr[iteration]] = iteration
     }
-    ++iteration
+    iteration++
   }
   return undefined
 }
 
 a = [2,5,1,2,3,5,1,2,4]
-console.log(a)
+console.log(first_recurring_character(a))
 b = [2,1,1,2,3,5,1,2,4]
-console.log(b)
+console.log(first_recurring_character(b))
 c = [2,3,4,5]
-console.log(c)
+console.log(first_recurring_character(c))
