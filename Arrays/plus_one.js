@@ -3,17 +3,28 @@
  * @return {number[]}
  */
 var plusOne = function(digits) {
-  const result = Number(digits.join('')) + 1
-  console.log(result)
-  for(let i = 0; i < result.length; i++) {
-    digits[i] = result[i]
-    console.log(result[i])
+  const result = (Number(digits.join('')) + 1).toString()
+  for (let i = 0; i < result.length; i++) {
+    digits[i] = Number(result[i])
   }
   return digits
 }
 
+var plusOneMod = function(digits) {
+  let result = 0
+  for(let i = 0; i < digits.length; i++) {
+    result += digits[i] * Math.pow(10,(digits.length - i - 1))
+  }
+  result++
+  
+  while(result > 0) {
+    div = 1
+  }
+  return result
+}
+
 nums1 = [1,2,3]
 nums2 = [4,3,2,1]
-plusOne(nums1)
-// console.log(plusOne(nums1))
+a = plusOneMod(nums1)
+console.log(a)
 // console.log(plusOne(nums2))
