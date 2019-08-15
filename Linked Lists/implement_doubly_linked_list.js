@@ -15,17 +15,17 @@ class DoublyLinkedList {
 
   prepend(value) {
     let newNode = new Node(value) 
-    this.head.prev = newNode
     newNode.next = this.head
+    this.head.prev = newNode
     this.head = newNode
     this.length++
     return this
   }
 
   append(value) {
-    let newNode = new Node(value)
-    this.tail.next = newNode
+    const newNode = new Node(value)
     newNode.prev = this.tail
+    this.tail.next = newNode
     this.tail = newNode
     this.length++
     return this
@@ -37,11 +37,11 @@ class DoublyLinkedList {
     }
     const newNode = new Node(value)
     const leader = this.traverseForwardToIndex(index-1)
-    const holder = leader.next
+    const follower = leader.next
     leader.next = newNode
-    newNode.next = holder
     newNode.prev = leader
-    holder.prev = newNode
+    newNode.next = follower
+    follower.prev = newNode
     this.length++
     return this
   }
@@ -91,7 +91,9 @@ let a = new DoublyLinkedList(10)
 a.append(5)
 a.append(15)
 a.append(12)
+console.log(a.printList())
 a.prepend(752)
+console.log(a.printList())
 a.append(1332)
 console.log(a.printList())
 a.remove(3)
@@ -100,3 +102,4 @@ a.remove(1)
 console.log(a.printList())
 a.insert(1, 32)
 console.log(a.printList())
+console.log(a)
