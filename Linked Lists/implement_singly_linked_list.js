@@ -84,13 +84,21 @@ class LinkedList {
   }
 
   reverse() {
-    let newList = new LinkedList(this.tail.value)
-    let counter = this.length - 2
-    while(counter >= 0) {
-      newList.append(this.traverseToIndex(counter).value)
-      counter--
+    if(!this.head.next) { // also if this.length === 1
+      return this.head
     }
-    return newList
+    let first = this.head
+    this.tail = this.head
+    let second = first.next
+    while(second) {
+      const temp = second.next
+      second.next = first
+      first = second
+      second = temp
+    }
+    this.head.next = null
+    this.head = first
+    return this
   }
 }
 
@@ -103,4 +111,4 @@ myLinkedList.insert(200, 909)
 myLinkedList.remove(2)
 console.log(myLinkedList.printList())
 myLinkedList.reverse()
-console.log(myLinkedList.reverse().printList())
+console.log(myLinkedList.printList())
