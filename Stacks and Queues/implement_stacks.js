@@ -13,33 +13,30 @@ class Stack {
   }
 
   peek() {
-    if(this.top === null) {
-      return null
-    } else {
-      return this.top
-    }
+    return this.top
   }
 
   push(value) {
     const newNode = new Node(value)
-    if(this.isEmpty()) {
+    if(this.length === 0) {
       this.top = newNode
       this.bottom = newNode
     } else {
-      this.top.next = newNode
+      const holder = this.top
       this.top = newNode
+      this.top.next = holder
     }
     this.length++
     return this
   }
 
   pop() {
-    let poppedNode = this.top
-    if(!this.isEmpty()) {
-      delete this.top
-      this.length--
-      return poppedNode
+    if(!this.top) {
+      return null
     }
+    const holder = this.top
+    this.top = this.top.next
+    this.length--
   }
 
   isEmpty() {
@@ -60,13 +57,6 @@ class Stack {
 }
 
 const myStack = new Stack()
-myStack.push('Discord')
-myStack.push('Udemy')
 myStack.push('Google')
-console.log(myStack)
-myStack.pop()
-console.log(myStack)
-// myStack.pop()
-console.log(myStack)
-// myStack.pop()
-console.log(myStack)
+myStack.push('Udemy')
+console.log(myStack.peek())
