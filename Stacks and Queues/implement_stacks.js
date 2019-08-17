@@ -34,9 +34,13 @@ class Stack {
     if(!this.top) {
       return null
     }
+    if (this.top === this.bottom) {
+      this.bottom = null
+    }
     const holder = this.top
     this.top = this.top.next
     this.length--
+    return this
   }
 
   isEmpty() {
@@ -44,19 +48,13 @@ class Stack {
       return 'Empty Stack!!'
     }
   }
-
-  printList() {
-    const arrList = []
-    let currentNode = this.bottom
-    while(currentNode !== null) {
-      arrList.push(this.currentNode.value)
-      currentNode = currentNode.next
-    }
-    return arrList
-  }
 }
 
 const myStack = new Stack()
 myStack.push('Google')
 myStack.push('Udemy')
-console.log(myStack.peek())
+myStack.pop()
+myStack.push('Discord')
+console.log(myStack)
+console.log(myStack.printList())
+// console.log(myStack.peek())
