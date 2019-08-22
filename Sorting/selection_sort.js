@@ -1,25 +1,42 @@
 const numbers = [99, 44, 6, 2, 1, 5, 63, 87, 283, 4, 0];
 
 function selectionSort(array) {
-  let min_index = 0
-  let min = array[min_index]
+  const length = array.length
   let start_index = 0
-  let tmp = 0
-  while(start_index < array.length) {
+  while(start_index < length) {
+    let min = start_index
+    let tmp = array[start_index]
     for(let i = start_index; i < array.length; i++) {
-      if(array[i] < min) {
-        min_index = i
-        min = array[min_index]
+      if(array[i] < array[min]) {
+        min = i
       }
     }
-    tmp = array[start_index]
-    array[start_index] = min
-    array[min_index] = tmp
-    start_index ++
-    min_index = start_index
-    min = array[start_index]
+    array[start_index] = array[min]
+    array[min] = tmp
+    start_index++
   }
 }
 
-selectionSort(numbers);
+
+// Version from ZTM Algorithms course - using nested for loops
+function selectionSortV2(array) {
+  const length = array.length
+  for(let i = 0; i < length; i++) {
+    // set current index as minimum
+    let min = i
+    let temp = array[i]
+    for(let j = i + 1; j < length; j++) {
+      if (array[j] < array[min]) {
+        // update minimum if current is lower than what we had previously
+        min = j
+      }
+    }
+    array[i] = array[min]
+    array[min] = temp
+  }
+  return array
+}
+
+// selectionSort(numbers);
+selectionSortV2(numbers);
 console.log(numbers)
