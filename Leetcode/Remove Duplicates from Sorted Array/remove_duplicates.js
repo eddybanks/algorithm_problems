@@ -3,15 +3,20 @@
  * @return {number}
  */
 var removeDuplicates = function(nums) {
-    let result = []
-    for(let i = 0; i < nums.length; i++) {
-        if(nums[i] > result[result.length-1])
-            result.append(nums[i])
-            console.log(result, nums[i])
+  let j = 0
+  let tmp = nums[j]
+  for(let i = 1; i < nums.length; i++) {
+    if(nums[i] > nums[j]) {
+      
+
     }
-    return result
+  }
+
 };
 
 const number = [0,0,1,1,1,2,2,3,3,4]
-let x = removeDuplicates(number)
-console.log(x)
+let len = removeDuplicates(number)
+console.log("The length is", len)
+for(let i = 0; i < len; i++) {
+  print(nums[i])
+}
