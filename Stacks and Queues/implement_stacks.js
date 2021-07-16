@@ -1,60 +1,64 @@
 class Node {
   constructor(value) {
-    this.value = value
-    this.next = null
+    this.value = value;
+    this.next = null;
   }
 }
 
 class Stack {
   constructor() {
-    this.top = null
-    this.bottom = null
-    this.length = 0
+    this.top = null;
+    this.bottom = null;
+    this.length = 0;
   }
 
   peek() {
-    return this.top
+    return this.top;
   }
 
   push(value) {
-    const newNode = new Node(value)
-    if(this.length === 0) {
-      this.top = newNode
-      this.bottom = newNode
+    const newNode = new Node(value);
+    if (this.length === 0) {
+      this.top = newNode;
+      this.bottom = newNode;
+    } else if (this.length === 1) {
+      newNode.next = this.bottom;
+      this.top = newNode;
     } else {
-      const holder = this.top
-      this.top = newNode
-      this.top.next = holder
+      newNode.next = this.top;
+      this.top = newNode;
     }
-    this.length++
-    return this
+    this.length++;
   }
 
   pop() {
-    if(!this.top) {
-      return null
+    if (!this.top) {
+      return null;
     }
-    if (this.top === this.bottom) {
-      this.bottom = null
+    const holdingPointer = this.top;
+    if (this.length === 1) {
+      this.bottom = null;
+      this.top = null;
+    } else {
+      this.top = this.top.next;
     }
-    const holder = this.top
-    this.top = this.top.next
-    this.length--
-    return this
+    this.length--;
+    return holdingPointer;
   }
 
   isEmpty() {
-    if(this.top === null) {
-      return 'Empty Stack!!'
+    if (this.length === 0) {
+      return true;
     }
   }
 }
 
-const myStack = new Stack()
-myStack.push('Google')
-myStack.push('Udemy')
-myStack.pop()
-myStack.push('Discord')
-console.log(myStack)
-console.log(myStack.printList())
+const myStack = new Stack();
+myStack.push("Google");
+myStack.push("Udemy");
+myStack.pop();
+myStack.push("Discord");
+console.log(myStack);
+console.log(myStack.peek());
+// console.log(myStack.printList());
 // console.log(myStack.peek())
