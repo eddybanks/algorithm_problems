@@ -1,53 +1,54 @@
 class Node {
   constructor(value) {
-    this.value = value
-    this.next = null
+    this.value = value;
+    this.next = null;
   }
 }
 
 class Queue {
   constructor() {
-    this.first = null
-    this.last = null
-    this.length = 0
+    this.first = null;
+    this.last = null;
+    this.length = 0;
   }
 
   peek() {
-    return this.first
+    return this.first;
   }
 
   enqueue(value) {
-    const newNode = new Node(value)
-    if(this.first === null) {
-      this.first = newNode
+    const newNode = new Node(value);
+
+    if (!this.first) {
+      this.first = newNode;
+      this.last = newNode;
     } else {
-      this.last.next = newNode
+      this.last.next = newNode;
+      this.last = newNode;
     }
-    this.last = newNode
-    this.length++
-    return this
+    this.length++;
   }
 
   dequeue() {
-    if(!this.first) {
-      return null
-    } 
-    if(this.first === this.last) {
-      this.last = null
+    if (!this.first) {
+      return null;
     }
-    const holder = this.first
-    this.first = holder.next
-    this.length--
-    return this
+    if (this.first === this.last) {
+      this.last = null;
+    }
+    const holdingPointer = this.first;
+    this.first = this.first.next;
+    this.length--;
+    return holdingPointer;
   }
 }
 
-const queueList = new Queue()
-queueList.enqueue('Joy')
-queueList.enqueue('Matt')
-queueList.enqueue('Pavel')
-queueList.enqueue('Samir')
-queueList.dequeue()
-queueList.dequeue()
-queueList.peek()
-console.log(queueList)
+const queueList = new Queue();
+queueList.enqueue("Joy");
+queueList.enqueue("Matt");
+queueList.enqueue("Pavel");
+queueList.enqueue("Samir");
+queueList.dequeue();
+queueList.dequeue();
+queueList.peek();
+console.log(queueList);
