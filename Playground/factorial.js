@@ -1,10 +1,7 @@
 function factorialIterative(n) {
   let answer = 1;
-  if (n === 2) {
-    answer = 2;
-  }
-  for (let i = 2; i <= number; i++) {
-    answer *= i;
+  for (let i = n; i >= 1; i--) {
+    answer = i * answer;
   }
   return answer;
 }
@@ -13,10 +10,10 @@ function factorialRecursive(n) {
   if (n < 2) {
     return 1;
   }
-  return factorialRecursive(n - 1) * n;
+  return n * factorialRecursive(n - 1);
 }
 
-let number = 5;
+let number = 1;
 
 console.log(factorialIterative(number));
-// console.log(factorialRecursive(number));
+console.log(factorialRecursive(number));
