@@ -36,6 +36,12 @@ const max_sub_array_of_size_k_optimized = function (k, arr) {
   return maxSum;
 };
 
+// Time Complexity#
+// The time complexity of the above algorithm will be O(N)
+
+// Space Complexity#
+// The algorithm runs in constant space O(1)
+
 // Tests
 const sample_tests = [
   {
